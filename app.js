@@ -1,9 +1,18 @@
 require('dotenv').config()
 
+//connectDB 
 const connectDB = require('./db/connect')
+
+//Routes
+const tasks = require('./routes/tasks')
 
 const express = require('express')
 const app = express()
+
+app.use(express.json())
+app.use(express.static('./public'))
+
+app.use('/api/v1/tasks', tasks)
 
 port = 3000 || process.env.PORT
 
